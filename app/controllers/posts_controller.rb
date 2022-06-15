@@ -10,6 +10,11 @@ class PostsController < ApplicationController
     post.save
   end
 
+  def show
+    post = Post.find(params[:id])
+    render json: post
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :body, :user_id)
