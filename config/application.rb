@@ -38,5 +38,9 @@ module Data
 
     config.time_zone='Tokyo'
     config.active_record.default_timezone= :local
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+    config.action_dispatch.cookies_same_site_protection = :none
   end
 end

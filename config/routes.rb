@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   scope :api do
     post "/users/create", to: "users#create"
+    post "/users/login", to: "users#login"
+    post "/users/logout", to: "users#logout"
   end
 end
