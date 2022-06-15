@@ -8,6 +8,21 @@ class UsersController < ApplicationController
     user.save
   end
 
+  def login
+    user = User.find_by(email: params[:email])
+    if user&.authenticate(params[:password])
+      session[:user_id] = user.id 
+      payload = user
+    else
+      payload = { message: 'メールアドレスまたはパスワードが正しくありません。' }
+    end
+    render json: payload
+  end
+
+  def logout
+    session.delete(:user_id);
+  end
+
   private
 
     def user_params
