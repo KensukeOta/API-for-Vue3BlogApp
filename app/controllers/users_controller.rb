@@ -20,6 +20,11 @@ class UsersController < ApplicationController
     render json: payload
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+  end
+
   def logout
     session.delete(:user_id);
   end
